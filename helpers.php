@@ -14,3 +14,11 @@
     $file_content = file_get_contents("./json/" . $file_name . ".json");
     return json_decode($file_content, true);
   }
+
+  function response($content, $status = 'start') {
+    if ($status == 'end') {
+      return 'END ' . $content; // END to terminate the session
+    } else {
+      return 'CON ' . $content; // CON to continue the session
+    }
+  }

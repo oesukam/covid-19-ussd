@@ -26,10 +26,10 @@
 
   switch ($current_level) {
     case '1':
-      $response = $levels[$current_level];
+      $response = formatResponse($levels[$current_level]);
       break;
     default:
-      $response = $levels['1'];
+      $response = formatResponse($levels['1']);
       break;
   }
 
