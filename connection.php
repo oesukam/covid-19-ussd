@@ -44,16 +44,16 @@
     public function insertActivity($session_id, $phone_number, $service_code, $input, $level = 1) {
       $query = "INSERT INTO sessions (session_id, phone_number, service_code, input, level) VALUES (?, ?, ?, ?, ?)";
       $stmt = $this->db->prepare($query);
-      return $stmt->execute([$session_id, $phone_number, $service_code, $input, $level = 1]); 
+      return $stmt->execute([$session_id, $phone_number, $service_code, $input, $level = 1]);; 
     }
 
     public function updateLevel($id, $level) {
       $query = "UPDATE sessions SET level = ? WHERE id = ?";
-      $stm = $this->db->prepare($query);
-      $stm->bindParam(1, $level);
-      $stm->bindParam(2, $id);
+      $stmt = $this->db->prepare($query);
+      $stmt->bindParam(1, $level);
+      $stmt->bindParam(2, $id);
 
-      return $stm->execute();
+      return $stmt->execute();
     }
 
     public function version () {
