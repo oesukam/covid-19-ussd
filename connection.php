@@ -7,7 +7,6 @@
     function __construct($db_name = 'db.sqlite') {
       try {
         $this->db_name = $db_name;
-        // $this->db = new SQLite3($db_name);
         $this->db  = new PDO("sqlite:{$db_name}");
         $table = 'CREATE TABLE "sessions" (
           "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
