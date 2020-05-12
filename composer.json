@@ -13,7 +13,6 @@
     "ussd"
   ],
   "require" : {
-    "php" : "^7.1",
-    "ext-mbstring": "*"
+    "php" : "^7.1"
   }
 }
