@@ -1,5 +1,7 @@
 ### Covid-19 USSD
 
+[Testing API](https://covid-19-paper.herokuapp.com)
+
 ### Technologies
 - PHP
 
