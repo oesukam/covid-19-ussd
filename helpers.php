@@ -22,3 +22,23 @@
       return 'CON ' . $content; // CON to continue the session
     }
   }
+
+  function handleMenu ($db, $act, $levels) {
+    $menu = '';
+    $current_level = $act['level'];
+    switch ($current_level) {
+      case '1':
+        $menu = formatResponse($levels[$current_level]);
+        $db->updateLevel($act['id'], 2);
+        break;
+      case '2':
+        $menu = formatResponse($levels[$current_level]);
+        $db->updateLevel($act['id'], 2);
+        break;
+      default:
+        $menu = formatResponse($levels['1']);
+        break;
+    }
+
+    return $menu;
+  }

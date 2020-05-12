@@ -32,6 +32,15 @@
       return $stm->execute();
     }
 
+    public function updateLevel($id, $level) {
+      $query = "UPDATE sessions SET level = ? WHERE id = ?";
+      $stm = $this->db->prepare($query);
+      $stm->bindParam(1, $level);
+      $stm->bindParam(2, $id);
+
+      return $stm->execute();
+    }
+
     public function version () {
       return $this->db->querySingle('SELECT SQLITE_VERSION()');
     }

@@ -7,6 +7,7 @@
   $db = new Connection();
 
   $levels = loadJson('levels');
+  $errors = loadJson('errors');
   
   $current_level = 1;
 
@@ -16,6 +17,7 @@
   $text        =  getParam("text");// This shows the user input. It combines all the 
         
 
+  
   $act = $db->findActivity($sessionId, $phoneNumber);
 
   if (!$act) {
@@ -24,13 +26,10 @@
     $current_level = $act['level'];
   }
 
-  switch ($current_level) {
-    case '1':
-      $response = formatResponse($levels[$current_level]);
-      break;
-    default:
-      $response = formatResponse($levels['1']);
-      break;
+  if (!$sessionId || !$serviceCode || !$phoneNumber || !$text) {
+    $response = $errors['session_data'];
+  } else {
+    $response = handleMenu($db, $act, $levels);
   }
 
   // Echo the response back to the API
