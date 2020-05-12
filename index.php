@@ -11,22 +11,22 @@
   
   $current_level = 1;
 
-  $sessionId   = getParam("sessionId"); // This is a session unique value generated for every session
-  $serviceCode =  getParam("serviceCode"); // This is your USSD code.
-  $phoneNumber =  getParam("phoneNumber");// This is the mobile subscriber number|
+  $session_id   = getParam("sessionId"); // This is a session unique value generated for every session
+  $service_code =  getParam("serviceCode"); // This is your USSD code.
+  $phone_number =  getParam("phoneNumber");// This is the mobile subscriber number|
   $text        =  getParam("text");// This shows the user input. It combines all the 
         
 
   
-  $act = $db->findActivity($sessionId, $phoneNumber);
+  $act = $db->findActivity($session_id, $phone_number);
 
   if (!$act) {
-    $db->insertActivity($sessionId, $phoneNumber, $serviceCode, $text, 1);
+    $db->insertActivity($session_id, $phone_number, $service_code, $text, 1);
   } else {
     $current_level = $act['level'];
   }
 
-  if (!$sessionId || !$serviceCode || !$phoneNumber || !$text) {
+  if (!$session_id || !$service_code || !$phone_number || !$text) {
     $response = $errors['session_data'];
   } else {
     $response = handleMenu($db, $act, $levels);

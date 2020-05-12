@@ -33,7 +33,7 @@
         break;
       case '2':
         $menu = formatResponse($levels[$current_level]);
-        $db->updateLevel($act['id'], 2);
+        $db->updateLevel($act['id'], 3);
         break;
       default:
         $menu = formatResponse($levels['1']);
