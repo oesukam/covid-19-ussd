@@ -15,7 +15,7 @@
     return json_decode($file_content, true);
   }
 
-  function response($content, $status = 'start') {
+  function formatResponse($content, $status = 'start') {
     if ($status == 'end') {
       return 'END ' . $content; // END to terminate the session
     } else {
