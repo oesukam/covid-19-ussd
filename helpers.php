@@ -1,6 +1,16 @@
 <?php
   // Reads the variables sent via POST from our gateway
   function getParam ($param) {
+    // Handle json  post request
+    if ($_SERVER["CONTENT_TYPE"] == 'application/json') {
+      $content = trim(file_get_contents("php://input"));
+      $inputs = json_decode($content, true);
+
+      if ($inputs[$param]) {
+        return strval($inputs[$param]);
+      }
+    }
+
     if (isset($_POST[$param])) {
       return strval($_POST[$param]);
     }

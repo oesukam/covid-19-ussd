@@ -34,8 +34,10 @@
 
     // Echo the response back to the API
     header('Content-type: text/plain');
+
     echo $response;
   } catch(Exception $e) {
+    header('Content-type: text/plain');
     echo 'Caught exception: ',  $e->getMessage(), "\n";
   }
 
