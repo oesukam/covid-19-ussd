@@ -26,7 +26,7 @@
       $current_level = $act['level'];
     }
 
-    if (!$session_id || !$service_code || !$phone_number || !$text) {
+    if (!$session_id || !$service_code || !$phone_number) {
       $response = $errors['session_data'];
     } else {
       $response = handleMenu($db, $act, $levels);
