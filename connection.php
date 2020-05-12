@@ -5,31 +5,47 @@
     private $db;
 
     function __construct($db_name = 'db.sqlite') {
-      $this->db_name = $db_name;
-      $this->db = new SQLite3($db_name);
+      try {
+        $this->db_name = $db_name;
+        // $this->db = new SQLite3($db_name);
+        $this->db  = new PDO("sqlite:{$db_name}");
+        $table = 'CREATE TABLE "sessions" (
+          "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+          "session_id" TEXT,
+          "phone_number" TEXT,
+          "input" TEXT,
+          "level" integer NOT NULL DEFAULT 1,
+          "status" TEXT NOT NULL DEFAULT active,
+          "service_code" TEXT,
+          "level_1_input" TEXT,
+          "level_2_input" TEXT,
+          "level_3_input" TEXT,
+          "level_4_input" TEXT,
+          "level_5_input" TEXT
+        )';
+
+        $this->db->exec($table);
+      }
+      catch(PDOException $e) {
+        // Print PDOException message
+        echo $e->getMessage();
+      }
     }
 
     public function findActivity($session_id, $phone_number) {
       $query = "SELECT * FROM sessions WHERE session_id = '{$session_id}' AND phone_number = '{$phone_number}' LIMIT 1";
       $res = $this->db->query($query);
-      
-      return $res->fetchArray(1);
+      return $res->fetch();
     }
 
     public function getAllSessions() {
-      return $this->db->query('SELECT * FROM sessions');
+      return $this->db->query('SELECT * FROM sessions')->fetchAll();
     }
 
     public function insertActivity($session_id, $phone_number, $service_code, $input, $level = 1) {
       $query = "INSERT INTO sessions (session_id, phone_number, service_code, input, level) VALUES (?, ?, ?, ?, ?)";
-      $stm = $this->db->prepare($query);
-      $stm->bindParam(1, $session_id);
-      $stm->bindParam(2, $phone_number);
-      $stm->bindParam(3, $service_code);
-      $stm->bindParam(4, $input);
-      $stm->bindParam(5, $level);
-
-      return $stm->execute();
+      $stmt = $this->db->prepare($query);
+      return $stmt->execute([$session_id, $phone_number, $service_code, $input, $level = 1]); 
     }
 
     public function updateLevel($id, $level) {
