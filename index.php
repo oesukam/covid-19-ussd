@@ -24,6 +24,7 @@
 
     if (!$act) {
       $db->insertActivity($session_id, $phone_number, $service_code, $text, 1);
+      $act = $db->findActivity($session_id, $phone_number);
     } else {
       $current_level = $act['level'];
     }

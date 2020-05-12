@@ -27,15 +27,16 @@
     $menu = '';
     $current_level = $act['level'];
     switch ($current_level) {
-      case '1':
+      case 1:
         $menu = formatResponse($levels[$current_level]);
         $db->updateLevel($act['id'], 2);
         break;
-      case '2':
+      case 2:
         $menu = formatResponse($levels[$current_level]);
         $db->updateLevel($act['id'], 3);
         break;
       default:
+        echo $current_level . 'default';
         $menu = formatResponse($levels['1']);
         break;
     }
