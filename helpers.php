@@ -36,8 +36,8 @@
         $db->updateLevel($act['id'], 3);
         break;
       default:
-        echo $current_level . 'default';
-        $menu = formatResponse($levels['1']);
+        $message = "Thank you for using our assistant";
+        $menu = formatResponse($message, 'end');
         break;
     }
 

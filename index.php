@@ -18,13 +18,10 @@
     $phone_number =  getParam("phoneNumber");// This is the mobile subscriber number|
     $text        =  getParam("text");// This shows the user input. It combines all the 
           
-
-    
     $act = $db->findActivity($session_id, $phone_number);
 
     if (!$act) {
       $db->insertActivity($session_id, $phone_number, $service_code, $text, 1);
-      $act = $db->findActivity($session_id, $phone_number);
     } else {
       $current_level = $act['level'];
     }
