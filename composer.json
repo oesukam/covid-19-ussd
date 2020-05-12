@@ -1,0 +1,19 @@
+{
+  "name": "covid-13-ussd",
+  "description": "Covid 19 ussd app for Afra Talking gateway",
+  "license": "MIT",
+    "authors": [
+      {
+        "name": "Olivier Esuka",
+        "email": "oesukam@gmail.com"
+      }
+    ],
+  "keywords": [
+    "covid-19",
+    "ussd"
+  ],
+  "require" : {
+    "php" : "^7.1",
+    "ext-mbstring": "*"
+  }
+}
