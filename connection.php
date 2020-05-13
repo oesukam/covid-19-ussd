@@ -74,14 +74,14 @@
       
       $stmt = $this->db->prepare($query);
 
-      $stmt->bindValue(':level', $act['level'], SQLITE3_INTEGER);
-      $stmt->bindValue(':level_1_input', $act['level_1_input'], SQLITE3_TEXT);
-      $stmt->bindValue(':level_2_input', $act['level_2_input'], SQLITE3_TEXT);
-      $stmt->bindValue(':level_3_input', $act['level_3_input'], SQLITE3_TEXT);
-      $stmt->bindValue(':level_4_input', $act['level_4_input'], SQLITE3_TEXT);
-      $stmt->bindValue(':level_5_input', $act['level_5_input'], SQLITE3_TEXT);
-      $stmt->bindValue(':status', $act['status'], SQLITE3_TEXT);
-      $stmt->bindValue(':id', $act['id'], SQLITE3_INTEGER);
+      $stmt->bindValue(':level', $act['level']);
+      $stmt->bindValue(':level_1_input', $act['level_1_input']);
+      $stmt->bindValue(':level_2_input', $act['level_2_input']);
+      $stmt->bindValue(':level_3_input', $act['level_3_input']);
+      $stmt->bindValue(':level_4_input', $act['level_4_input']);
+      $stmt->bindValue(':level_5_input', $act['level_5_input']);
+      $stmt->bindValue(':status', $act['status']);
+      $stmt->bindValue(':id', $act['id']);
 
       return $stmt->execute();
     }
