@@ -30,7 +30,7 @@
     if (!$session_id || !$service_code || !$phone_number) {
       $response = $errors['session_data'];
     } else {
-      $response = handleMenu($db, $act, $levels);
+      $response = handleMenu($db, $act, $levels, $text);
     }
 
     // Echo the response back to the API
@@ -39,7 +39,7 @@
     echo $response;
   } catch(Exception $e) {
     header('Content-type: text/plain');
-    echo 'Caught exception: ',  $e->getMessage(), "\n";
+    echo $e->getMessage(), "\n";
   }
 
 ?>
