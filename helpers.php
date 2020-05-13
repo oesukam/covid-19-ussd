@@ -93,14 +93,6 @@
         $act["level_{$current_level}_input"] = $input;
         $db->updateActivity($act);
         break;
-      case 7:
-        $choice = $current_level . $input;
-        checkInput($previous_level, $input);
-        $menu = formatResponse($levels[$choice]);
-        $act['level'] = ++$act['level'];
-        $act["level_{$current_level}_input"] = $input;
-        $db->updateActivity($act);
-        break;
       default:
         checkInput($current_level, $input);
         $message = "Thank you for using our assistant";
