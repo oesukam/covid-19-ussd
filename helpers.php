@@ -64,12 +64,19 @@
         $db->updateActivity($act);
         break;
       case 3:
-          checkInput($current_level, $input);
-          $menu = formatResponse($levels[$current_level]);
-          $act['level'] = ++$act['level'];
-          $act["level_{$current_level}_input"] = $input;
-          $db->updateActivity($act);
-          break;
+        checkInput($current_level, $input);
+        $menu = formatResponse($levels[$current_level]);
+        $act['level'] = ++$act['level'];
+        $act["level_{$current_level}_input"] = $input;
+        $db->updateActivity($act);
+        break;
+      case 4:
+        checkInput($current_level, $input);
+        $menu = formatResponse($levels[$current_level]);
+        $act['level'] = ++$act['level'];
+        $act["level_{$current_level}_input"] = $input;
+        $db->updateActivity($act);
+        break;
       default:
         checkInput($current_level, $input);
         $message = "Thank you for using our assistant";
