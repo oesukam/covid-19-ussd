@@ -28,7 +28,7 @@
     }
 
     if (!$session_id || !$service_code || !$phone_number) {
-      $response = $errors['session_data'];
+      $response = 'END ' .$errors['session_data'];
     } else {
       $response = handleMenu($db, $act, $levels, $text);
     }
@@ -39,7 +39,7 @@
     echo $response;
   } catch(Exception $e) {
     header('Content-type: text/plain');
-    echo $e->getMessage(), "\n";
+    echo 'END ' . $e->getMessage(), "\n";
   }
 
 ?>
