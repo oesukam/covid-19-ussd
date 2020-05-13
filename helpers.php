@@ -40,7 +40,7 @@
     }
 
     if (!preg_match($levels_choices[$level], $input)) {
-      throw new Exception("Wrong input", 1); 
+      throw new Exception("Wrong input: {$input}", 1); 
     }
 
     return true;
