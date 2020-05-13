@@ -49,6 +49,7 @@
   function handleMenu ($db, $act, $levels, $input) {
     $menu = '';
     $current_level = $act['level'];
+    $previous_level = $act['level'] - 1;
     switch ($current_level) {
       case 1:
         $menu = formatResponse($levels[$current_level]);
@@ -57,22 +58,45 @@
         $db->updateActivity($act);
         break;
       case 2:
-        checkInput($current_level, $input);
+        checkInput($previous_level, $input);
         $menu = formatResponse($levels[$current_level]);
         $act['level'] = ++$act['level'];
         $act["level_{$current_level}_input"] = $input;
         $db->updateActivity($act);
         break;
       case 3:
-        checkInput($current_level, $input);
+        checkInput($previous_level, $input);
         $menu = formatResponse($levels[$current_level]);
         $act['level'] = ++$act['level'];
         $act["level_{$current_level}_input"] = $input;
         $db->updateActivity($act);
         break;
       case 4:
-        checkInput($current_level, $input);
+        checkInput($previous_level, $input);
         $menu = formatResponse($levels[$current_level]);
+        $act['level'] = ++$act['level'];
+        $act["level_{$current_level}_input"] = $input;
+        $db->updateActivity($act);
+        break;
+      case 5:
+        checkInput($previous_level, $input);
+        $menu = formatResponse($levels[$current_level]);
+        $act['level'] = ++$act['level'];
+        $act["level_{$current_level}_input"] = $input;
+        $db->updateActivity($act);
+        break;
+      case 6:
+        $choice = $current_level . $input;
+        checkInput($previous_level, $input);
+        $menu = formatResponse($levels[$choice]);
+        $act['level'] = ++$act['level'];
+        $act["level_{$current_level}_input"] = $input;
+        $db->updateActivity($act);
+        break;
+      case 7:
+        $choice = $current_level . $input;
+        checkInput($previous_level, $input);
+        $menu = formatResponse($levels[$choice]);
         $act['level'] = ++$act['level'];
         $act["level_{$current_level}_input"] = $input;
         $db->updateActivity($act);
