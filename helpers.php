@@ -52,22 +52,30 @@
     switch ($current_level) {
       case 1:
         $menu = formatResponse($levels[$current_level]);
-        $db->updateLevel($act['id'], 2);
+        $act['level'] = ++$act['level'];
+        $act["level_{$current_level}_input"] = $input;
+        $db->updateActivity($act);
         break;
       case 2:
         checkInput($current_level, $input);
         $menu = formatResponse($levels[$current_level]);
-        $db->updateLevel($act['id'], 3);
+        $act['level'] = ++$act['level'];
+        $act["level_{$current_level}_input"] = $input;
+        $db->updateActivity($act);
         break;
       case 3:
           checkInput($current_level, $input);
           $menu = formatResponse($levels[$current_level]);
-          $db->updateLevel($act['id'], 4);
+          $act['level'] = ++$act['level'];
+          $act["level_{$current_level}_input"] = $input;
+          $db->updateActivity($act);
           break;
       default:
         checkInput($current_level, $input);
         $message = "Thank you for using our assistant";
         $menu = formatResponse($message, 'end');
+        $act['status'] = 'terminated';
+        $db->updateActivity($act);
         break;
     }
 
