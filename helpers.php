@@ -33,7 +33,20 @@
     }
   }
 
-  function handleMenu ($db, $act, $levels) {
+  function checkInput($level = 1, $input) {
+    $levels_choices = loadJson('levels-choices');
+    if (!array_key_exists($level, $levels_choices)) {
+      return true;
+    }
+
+    if (!preg_match($levels_choices[$level], $input)) {
+      throw new Exception("Wrong input", 1); 
+    }
+
+    return true;
+  }
+
+  function handleMenu ($db, $act, $levels, $input) {
     $menu = '';
     $current_level = $act['level'];
     switch ($current_level) {
@@ -42,10 +55,12 @@
         $db->updateLevel($act['id'], 2);
         break;
       case 2:
+        checkInput($current_level, $input);
         $menu = formatResponse($levels[$current_level]);
         $db->updateLevel($act['id'], 3);
         break;
       default:
+        checkInput($current_level, $input);
         $message = "Thank you for using our assistant";
         $menu = formatResponse($message, 'end');
         break;
