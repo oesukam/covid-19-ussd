@@ -30,7 +30,9 @@
     if (!$session_id || !$service_code || !$phone_number) {
       $response = 'END ' .$errors['session_data'];
     } else {
-      $response = handleMenu($db, $act, $levels, $text);
+      $inputs = explode("*", $text);
+      $input = end($inputs);
+      $response = handleMenu($db, $act, $levels, $input);
     }
 
     // Echo the response back to the API
