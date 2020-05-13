@@ -59,6 +59,11 @@
         $menu = formatResponse($levels[$current_level]);
         $db->updateLevel($act['id'], 3);
         break;
+      case 3:
+          checkInput($current_level, $input);
+          $menu = formatResponse($levels[$current_level]);
+          $db->updateLevel($act['id'], 4);
+          break;
       default:
         checkInput($current_level, $input);
         $message = "Thank you for using our assistant";
