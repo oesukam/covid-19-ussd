@@ -1,6 +1,8 @@
 {
   "1": "Choose language\n1. English \n2. French \n3. Arabic \n4. Swahili \n",
   "2": "Choose Province\n1. Kinshasa \n2. Equateur \n3. Sud Kivu \n4. Nord Kivu \n",
-  "3": "Choose Genger\n1. Female \n2. Male\n",
-  "4": "Main Menu \n1. Consultation\n2. Pat-progress\n3. RP-Progress\n4. Expert-Enquiry\n5. Doctor assistance \n6. Emergency"
+  "3": "Choose Gender\n1. Female \n2. Male\n",
+  "4": "Enter your age:",
+  "5": "Main Menu \n1. Consultation\n2. Pat-progress\n3. RP-Progress\n4. Expert-Enquiry\n5. Doctor assistance \n6. Emergency",
+  "61": "Select symptoms\n1. Fever\n2. Cough\n3. Difficult breathing or shortness of breath\n4. Chills\n5. Repeated shaking with chills\n6. Muscle pain\n7. Headache\n8. Sore throat\n9. New Loss of taste or smell\n10. Emergence warning sign"
 }
